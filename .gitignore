@@ -4,9 +4,11 @@
 .*/
 
 # ~~~~~~~~~ Language specific ~~~~~~~~~
-pkg/
+*.class
+hs_err_pid*
+build/
 out/
-Gemfile.lock
+target/
 
 # ~~~~~~~~~ IDE specific ~~~~~~~~~
 

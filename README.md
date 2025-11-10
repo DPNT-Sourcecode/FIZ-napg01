@@ -1,13 +1,12 @@
-# tdl-warmup-ruby
+# tdl-runner-scala
 
 
 ## 1. Requirements
 
-- `Ruby 3.4.2`
-- `bundler`
+- `Scala 3.6.2`
+- `sbt 1.10.7`
 
 ## 2. How to start
 
-- Install dependencies `bundle install`
-- Open `lib/send_command_to_server.rb` in your favorite IDE
+- Open `src/main/scala/io/accelerate/SendCommandToServer.scala` in your favorite IDE
 - Read the comments as documentation, they will guide through the rest of the setup
