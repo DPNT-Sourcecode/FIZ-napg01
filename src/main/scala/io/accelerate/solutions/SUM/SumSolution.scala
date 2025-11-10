@@ -5,4 +5,3 @@ import io.accelerate.runner.SolutionNotImplementedException
 class SumSolution {
   def sum(x: Int, y: Int): Int = x + y
 }
-
