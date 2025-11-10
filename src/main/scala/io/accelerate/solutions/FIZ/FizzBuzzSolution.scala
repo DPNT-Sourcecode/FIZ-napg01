@@ -1,7 +1,10 @@
 package io.accelerate.solutions.FIZ
 
-import io.accelerate.runner.SolutionNotImplementedException
-
 class FizzBuzzSolution {
-  def fizzBuzz(number: Int): String = throw new SolutionNotImplementedException()
+  def fizzBuzz(number: Int): String =
+    (number % 3 == 0, number % 5 == 0) match {
+      case (true, true) => "fizz buzz"
+      case _ => number.toString
+    }
 }
+
