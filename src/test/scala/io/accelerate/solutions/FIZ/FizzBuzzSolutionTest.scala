@@ -40,6 +40,17 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9853) shouldBe "fizz buzz"
   }
 
+  it should "print 'deluxe' for numbers greater than 10 where all digits are identical" in {
+    FizzBuzzSolution().fizzBuzz(11) shouldBe "deluxe"
+    FizzBuzzSolution().fizzBuzz(777) shouldBe "deluxe"
+  }
+
+  it should "print 'deluxe' in combination" in {
+    FizzBuzzSolution().fizzBuzz(333) shouldBe "fizz deluxe"
+    FizzBuzzSolution().fizzBuzz(55) shouldBe "buzz deluxe"
+    FizzBuzzSolution().fizzBuzz(55) shouldBe "buzz deluxe"
+  }
+
   it should "print the number for anything else" in {
     FizzBuzzSolution().fizzBuzz(1) shouldBe "1"
     FizzBuzzSolution().fizzBuzz(8) shouldBe "8"
@@ -47,3 +58,4 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
+
