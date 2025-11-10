@@ -17,6 +17,11 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(38) shouldBe "fizz"
   }
 
+  it should "print 'fizz deluxe' for multiples of 3 containing a 3" in {
+    FizzBuzzSolution().fizzBuzz(36) shouldBe "fizz deluxe"
+    FizzBuzzSolution().fizzBuzz(9346) shouldBe "fizz deluxe"
+  }
+
   it should "print 'buzz' for multiples of 5" in {
     FizzBuzzSolution().fizzBuzz(5) shouldBe "buzz"
     FizzBuzzSolution().fizzBuzz(20) shouldBe "buzz"
@@ -26,6 +31,11 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
   it should "print 'buzz' for numbers containing a 5" in {
     FizzBuzzSolution().fizzBuzz(52) shouldBe "buzz"
     FizzBuzzSolution().fizzBuzz(557) shouldBe "buzz"
+  }
+
+  it should "print 'buzz deluxe' for multiples of 5 containing a 5" in {
+    FizzBuzzSolution().fizzBuzz(25) shouldBe "buzz deluxe"
+    FizzBuzzSolution().fizzBuzz(550) shouldBe "buzz deluxe"
   }
 
   it should "print 'fizz buzz' for multiples of 3 and 5" in {
@@ -40,18 +50,8 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9853) shouldBe "fizz buzz"
   }
 
-  it should "print 'deluxe' for numbers greater than 10 where all digits are identical and even" in {
-    FizzBuzzSolution().fizzBuzz(88) shouldBe "deluxe"
-    FizzBuzzSolution().fizzBuzz(4444) shouldBe "deluxe"
-  }
-
-  it should "print 'deluxe' for numbers greater than 10 where all digits are identical and odd" in {
-    FizzBuzzSolution().fizzBuzz(11) shouldBe "fake deluxe"
-    FizzBuzzSolution().fizzBuzz(7777) shouldBe "fake deluxe"
-  }
-
-  it should "print 'deluxe' in combination" in {
-    FizzBuzzSolution().fizzBuzz(444) shouldBe "fizz deluxe"
+  it should "print 'fizz buzz deluxe' in combination" in {
+    FizzBuzzSolution().fizzBuzz(735) shouldBe "fizz buzz deluxe"
   }
 
   it should "print 'fake deluxe' in combination" in {
@@ -67,6 +67,7 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
+
 
 
 
