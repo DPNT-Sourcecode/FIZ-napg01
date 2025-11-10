@@ -1,7 +1,7 @@
 # How to update and release new client library
 
 Change library version is:
-- `build.sbt`
+- `build.gradle`
 
 Runner version = Client version + Runner patch
 Example:

@@ -8,23 +8,29 @@ set -o pipefail
 SCRIPT_CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 CHALLENGE_ID=$1
-SCOVERAGE_REPORT_XML_FILE="${SCRIPT_CURRENT_DIR}/target/scala-3.6.2/scoverage-report/scoverage.xml"
-SCALA_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
+JACOCO_TEST_REPORT_XML_FILE="${SCRIPT_CURRENT_DIR}/build/jacoco/test/jacocoTestReport.xml"
+mkdir -p ${SCRIPT_CURRENT_DIR}/target
+JAVA_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 
-( cd ${SCRIPT_CURRENT_DIR} && sbt clean coverage test || sbt coverageReport)
+export JAVA_OPTS=${JAVA_OPTS:-""}
+export GRADLE_OPTS=${GRADLE_OPTS:-""}
 
-[ -e ${SCALA_CODE_COVERAGE_INFO} ] && rm ${SCALA_CODE_COVERAGE_INFO}
+( . ${SCRIPT_CURRENT_DIR}/gradlew -p ${SCRIPT_CURRENT_DIR} -q clean test jacocoTestReport --console=plain 1>&2 )
 
-if [ -f "${SCOVERAGE_REPORT_XML_FILE}" ]; then
-    COVERAGE_PERCENT=$(( 0 ))
-    echo ${COVERAGE_PERCENT} > ${SCALA_CODE_COVERAGE_INFO}
-    COVERAGE_OUTPUT=$(xmllint --xpath '//package[@name="io.accelerate.solutions.'${CHALLENGE_ID}'"]/@statement-rate' ${SCOVERAGE_REPORT_XML_FILE})
+[ -e ${JAVA_CODE_COVERAGE_INFO} ] && rm ${JAVA_CODE_COVERAGE_INFO}
+
+if [ -f "${JACOCO_TEST_REPORT_XML_FILE}" ]; then
+    PERCENTAGE=$(( 0 ))
+    echo ${PERCENTAGE} > ${JAVA_CODE_COVERAGE_INFO}
+    COVERAGE_OUTPUT=$(xmllint --xpath '//package[@name="io/accelerate/solutions/'${CHALLENGE_ID}'"]/counter[@type="INSTRUCTION"]' ${JACOCO_TEST_REPORT_XML_FILE})
     if [[ ! -z "${COVERAGE_OUTPUT}" ]]; then
-        COVERAGE_PERCENT=$(echo ${COVERAGE_OUTPUT} | tr '".' ' ' | tr -s ' ' | awk '{printf "%.0f", $2}')
-        COVERAGE_PERCENT=$(( ${COVERAGE_PERCENT} + 0 ))
+        MISSED=$(echo ${COVERAGE_OUTPUT} | awk '{print missed, $3}' | tr '="' ' ' | awk '{print $2}')
+        COVERED=$(echo ${COVERAGE_OUTPUT} | awk '{print missed, $4}' | tr '="' ' '| awk '{print $2}')
+        TOTAL_LINES=$((MISSED + $COVERED))
+        PERCENTAGE=$(($COVERED * 100 / $TOTAL_LINES))
     fi
-    echo ${COVERAGE_PERCENT} > ${SCALA_CODE_COVERAGE_INFO}
-    cat ${SCALA_CODE_COVERAGE_INFO}
+    echo ${PERCENTAGE} > ${JAVA_CODE_COVERAGE_INFO}
+    cat ${JAVA_CODE_COVERAGE_INFO}
     exit 0
 else
     echo "No coverage report was found"
