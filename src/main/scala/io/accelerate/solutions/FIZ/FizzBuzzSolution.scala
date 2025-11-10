@@ -5,7 +5,7 @@ class FizzBuzzSolution {
     val numberString = number.toString
     val isFizz = number % 3 == 0 || numberString.contains("3")
     val isBuzz = number % 5 == 0 || numberString.contains("5")
-    val isDeluxe = number > 10 && numberString.forall(_ == numberString(0))
+    val isDeluxe = (number % 3 == 0 && numberString.contains("3")) || (number % 5 == 0 && numberString.contains("5"))
     val isFake = number % 2 == 1
     val segments = Seq(
       Some("fizz").filter(_ => isFizz),
@@ -20,3 +20,4 @@ class FizzBuzzSolution {
     }
   }
 }
+

@@ -7,7 +7,7 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
   behavior of "FizzBuzz"
 
   it should "print 'fizz' for multiples of 3" in {
-    FizzBuzzSolution().fizzBuzz(3) shouldBe "fizz"
+    FizzBuzzSolution().fizzBuzz(6) shouldBe "fizz"
     FizzBuzzSolution().fizzBuzz(9) shouldBe "fizz"
     FizzBuzzSolution().fizzBuzz(96) shouldBe "fizz"
   }
@@ -23,12 +23,13 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
   }
 
   it should "print 'fizz fake deluxe' for odd multiples of 3 containing a 3" in {
+    FizzBuzzSolution().fizzBuzz(3) shouldBe "fizz fake deluxe"
     FizzBuzzSolution().fizzBuzz(33) shouldBe "fizz fake deluxe"
     FizzBuzzSolution().fizzBuzz(831) shouldBe "fizz fake deluxe"
   }
 
   it should "print 'buzz' for multiples of 5" in {
-    FizzBuzzSolution().fizzBuzz(5) shouldBe "buzz"
+    FizzBuzzSolution().fizzBuzz(10) shouldBe "buzz"
     FizzBuzzSolution().fizzBuzz(20) shouldBe "buzz"
     FizzBuzzSolution().fizzBuzz(8000) shouldBe "buzz"
   }
@@ -40,16 +41,17 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
 
   it should "print 'buzz deluxe' for even multiples of 5 containing a 5" in {
     FizzBuzzSolution().fizzBuzz(50) shouldBe "buzz deluxe"
-    FizzBuzzSolution().fizzBuzz(1050) shouldBe "buzz deluxe"
+    FizzBuzzSolution().fizzBuzz(2050) shouldBe "buzz deluxe"
   }
 
   it should "print 'buzz fake deluxe' for odd multiples of 5 containing a 5" in {
+    FizzBuzzSolution().fizzBuzz(5) shouldBe "buzz fake deluxe"
     FizzBuzzSolution().fizzBuzz(25) shouldBe "buzz fake deluxe"
-    FizzBuzzSolution().fizzBuzz(535) shouldBe "buzz fake deluxe"
+    FizzBuzzSolution().fizzBuzz(545) shouldBe "buzz fake deluxe"
   }
 
   it should "print 'fizz buzz' for multiples of 3 and 5" in {
-    FizzBuzzSolution().fizzBuzz(15) shouldBe "fizz buzz"
+    FizzBuzzSolution().fizzBuzz(60) shouldBe "fizz buzz"
     FizzBuzzSolution().fizzBuzz(900) shouldBe "fizz buzz"
     FizzBuzzSolution().fizzBuzz(9000) shouldBe "fizz buzz"
   }
@@ -61,10 +63,12 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
   }
 
   it should "print 'fizz buzz deluxe' in combination" in {
+    FizzBuzzSolution().fizzBuzz(1050) shouldBe "fizz buzz deluxe"
     FizzBuzzSolution().fizzBuzz(3000) shouldBe "fizz buzz deluxe"
   }
 
   it should "print 'fizz buzz fake deluxe' in combination" in {
+    FizzBuzzSolution().fizzBuzz(15) shouldBe "fizz buzz fake deluxe"
     FizzBuzzSolution().fizzBuzz(735) shouldBe "fizz buzz fake deluxe"
   }
 
@@ -75,3 +79,4 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
+
