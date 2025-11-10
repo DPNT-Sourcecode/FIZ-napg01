@@ -47,5 +47,3 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
-
-
