@@ -51,9 +51,7 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
   }
 
   it should "print 'deluxe' in combination" in {
-    FizzBuzzSolution().fizzBuzz(55) shouldBe "buzz deluxe"
-    FizzBuzzSolution().fizzBuzz(333) shouldBe "fizz deluxe"
-    FizzBuzzSolution().fizzBuzz(555) shouldBe "fizz buzz deluxe"
+    FizzBuzzSolution().fizzBuzz(444) shouldBe "fizz deluxe"
   }
 
   it should "print 'fake deluxe' in combination" in {
@@ -69,6 +67,7 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
+
 
 
 
