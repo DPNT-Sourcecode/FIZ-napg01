@@ -40,15 +40,26 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9853) shouldBe "fizz buzz"
   }
 
-  it should "print 'deluxe' for numbers greater than 10 where all digits are identical" in {
-    FizzBuzzSolution().fizzBuzz(11) shouldBe "deluxe"
+  it should "print 'deluxe' for numbers greater than 10 where all digits are identical and even" in {
+    FizzBuzzSolution().fizzBuzz(88) shouldBe "deluxe"
     FizzBuzzSolution().fizzBuzz(4444) shouldBe "deluxe"
+  }
+
+  it should "print 'deluxe' for numbers greater than 10 where all digits are identical and odd" in {
+    FizzBuzzSolution().fizzBuzz(11) shouldBe "fake deluxe"
+    FizzBuzzSolution().fizzBuzz(7777) shouldBe "fake deluxe"
   }
 
   it should "print 'deluxe' in combination" in {
     FizzBuzzSolution().fizzBuzz(55) shouldBe "buzz deluxe"
     FizzBuzzSolution().fizzBuzz(333) shouldBe "fizz deluxe"
     FizzBuzzSolution().fizzBuzz(555) shouldBe "fizz buzz deluxe"
+  }
+
+  it should "print 'fake deluxe' in combination" in {
+    FizzBuzzSolution().fizzBuzz(55) shouldBe "buzz fake deluxe"
+    FizzBuzzSolution().fizzBuzz(333) shouldBe "fizz fake deluxe"
+    FizzBuzzSolution().fizzBuzz(555) shouldBe "fizz buzz fake deluxe"
   }
 
   it should "print the number for anything else" in {
@@ -58,5 +69,6 @@ class FizzBuzzSolutionTest extends AnyFlatSpec with Matchers {
     FizzBuzzSolution().fizzBuzz(9998) shouldBe "9998"
   }
 }
+
 
 
